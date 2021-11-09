@@ -1,5 +1,4 @@
-# ecommerce_django_paypal
-Ecommerce Website with Django
+# Ecommerce Website with Django and PayPal
 
 # FEATURES
 - Products are displayed on the index page
