@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Quantity and Price Section -->
+<div class = 'container' style = "width: 70%">
+    <table class="table table-light table-hover">
+        <thead>
+          <tr>
+            <th scope="col"><button type="button" class="btn btn-primary btn-lg">Continue Shopping →</button></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+         
+          <tr>
+            <th scope="row"><h3><strong>Items: {{cart.get_itemtotal}}</strong></h3></th>
+            <td></td>
+            <td><h3><strong>Total: ${{cart.get_cart_total|floatformat:2}}</strong></h3></td>
+            <!-- <td></td> -->
+            
+            <td>
+              <a href = " {% url 'checkout' %} ">
+                <button type="button" class="btn btn-primary btn-lg">Checkout →</button></a></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Cart Section -->
+<div class = 'container' style = 'margin-top: 50px; width: 70%'>
+<table class="table table-light table-hover">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"><h3><strong>Item</strong></h3></th>
+        <th scope="col"><h3><strong>Price</strong></h3></th>
+        <th scope="col"><h3><strong>Quantity</strong></h3></th>
+        <th scope="col"><h3><strong>Total</strong></h3></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for item in cartitems %}
+      <tr>
+        <th scope="row"><div id = "cart_image"><img src = {{item.product.image.url}}></div></th>
+        <td><h3>{{item.product.name}}</h3></td>
+        <td><h3>{{item.product.price}}</h3></td>
+        <td><input type = 'number' class = 'quantity' value = "{{item.quantity}}" style = 'width: 50px; padding-left: 5px'></td>
+        <td><h3>{{item.get_total | floatformat:2}}</h3></td>
+      </tr>
+      {% endfor %}
+      
+      
+    </tbody>
+  </table>
+</div>
+{% endblock %}
